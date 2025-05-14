@@ -23,6 +23,7 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador.
 - Nextjs
 - Material UI Design
 - Express
+- Cookies para autenticação
 
 
 ## Deploy on Vercel

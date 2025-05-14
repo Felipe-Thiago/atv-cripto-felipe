@@ -1,16 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useAuth } from "./context/AuthContext";
 
 export default function App() {
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      router.push("/encode");
-    }
-  }, [router]);
+  const { bearerToken, login } = useAuth();
 
   return (
     <div>
