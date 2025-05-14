@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 export default function App() {
   const router = useRouter();
@@ -24,11 +23,11 @@ export default function App() {
             <input type="password" id="password" className="border border-gray-300 p-2 rounded w-full" />
           </div>
           
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => router.push("/encode")}>
             Fazer Login
           </button>
           <p className="text-white mt-4">
-            Não tem uma conta? <a href="/register" className="text-blue-400">Registrar</a>
+            Não tem uma conta? <a href="" className="text-blue-400" onClick={() => router.push("/register")} >Registrar</a>
           </p>
         </form>
       </div>
