@@ -1,7 +1,15 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import { useRouter } from "next/navigation";
 
-const encode = () => {
+const Encode = () => {
+    const router = useRouter();
+
+    const handleLogout = () => {
+        localStorage.removeItem("bearerToken");
+        router.push("/pages/login");
+    };
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
             <Header />
@@ -16,10 +24,12 @@ const encode = () => {
                 Codificar
                 </button>
             </form>
-
+            <button onClick={handleLogout} className="mt-6 bg-red-500 text-white px-4 py-2 rounded">
+                Sair
+            </button>
         <Footer />
         </div>
     );
 }
 
-export default encode;
+export default Encode;
