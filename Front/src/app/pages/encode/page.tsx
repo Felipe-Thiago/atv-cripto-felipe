@@ -1,9 +1,18 @@
+"use client";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Encode = () => {
     const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem("bearerToken");
+        if (!token) {
+            router.push("/pages/login");
+        }
+    }, [router]);
 
     const handleLogout = () => {
         localStorage.removeItem("bearerToken");
