@@ -2,13 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { connectDB } from './utils/mongodb';
+import { connectDB } from './utils/mongodb.js';
 import bodyParser from 'body-parser';
+import LoginRoute from './routes/LoginRoute.js'
 
 dotenv.config();
 
 const app = express();
-const porta = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 // Conexão com o MongoDB
 connectDB();
@@ -31,6 +32,6 @@ app.get('/api', (req, res) => {
 app.use('/api/logins', LoginRoute);
 
 //Iniciar o servidor
-app.listen(porta, () => {
+app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
