@@ -13,7 +13,7 @@ export const register = async (req, res) => {
         const { email, senha } = req.body;
         const senhaCrypt = await bcrypt.hash(senha, 10);
         
-        const usuario = new User({ email, senhaCripyt});
+        const usuario = new User({ email, senha: senhaCrypt});
         await usuario.save();
         res.status(201).json(usuario);
     } catch (error) {
@@ -30,6 +30,11 @@ export const login = async (req, res) => {
 
         const {email, senha} = req.body;
         const usuario = await User.findOne({ email });
+
+        console.log('Usuário encontrado:', usuario);
+        if(usuario) {
+            console.log('Senha no banco:', usuario.senha);
+        }
 
         if(!usuario) {
             return res.status(404).json({ message: 'Usuário não encontrado' });

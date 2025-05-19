@@ -10,8 +10,6 @@ export const validaLogin = [
 ];
 
 export const validaCadastro = [
-  check('nome')
-    .notEmpty().withMessage('O nome é obrigatório'),
   check('email')
     .notEmpty().withMessage('O email é obrigatório')
     .isEmail().withMessage('O email informado não é válido')
