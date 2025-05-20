@@ -5,11 +5,14 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import React, { useState } from "react";
 import authService from "@/app/services/authService";
+import { useAuth } from "@/context/AuthContext";
 const Login = () => {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [errorMsg, setErrorMsg] = useState<string[]>([]);
+
+    const { bearerToken, login } = useAuth();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -27,6 +30,7 @@ const Login = () => {
     };
     return (
         <div>
+            { bearerToken }
             <Header />
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
                 <h1 className="text-3xl font-bold mb-4">Bem-vindo ao Codificador</h1>

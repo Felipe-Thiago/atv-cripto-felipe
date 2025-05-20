@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './utils/mongodb.js';
 import bodyParser from 'body-parser';
 import LoginRoute from './routes/LoginRoute.js'
+import MensagemRoute from './routes/MensagemRoute.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/logins', LoginRoute);
+app.use('/api/mensagens', MensagemRoute);
 
 //Iniciar o servidor
 app.listen(PORT, () => {
